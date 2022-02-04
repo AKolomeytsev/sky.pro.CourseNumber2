@@ -3,14 +3,17 @@ package pro.sky.sky.pro.CourseNumber2.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.sky.pro.CourseNumber2.Data.Question;
+import pro.sky.sky.pro.CourseNumber2.Service.ExaminerService;
 import pro.sky.sky.pro.CourseNumber2.Service.JavaQuestionService;
 
 @RestController
 public class JavaQuestionController {
     private final JavaQuestionService javaQuestionService;
+    private final ExaminerService examinerService;
 
-    public JavaQuestionController(JavaQuestionService javaQuestionService) {
+    public JavaQuestionController(JavaQuestionService javaQuestionService, ExaminerService examinerService) {
         this.javaQuestionService = javaQuestionService;
+        this.examinerService = examinerService;
     }
 
     @GetMapping(path = "add")

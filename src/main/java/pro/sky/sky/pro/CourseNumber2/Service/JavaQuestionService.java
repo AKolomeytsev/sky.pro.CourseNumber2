@@ -71,8 +71,9 @@ public class JavaQuestionService implements IQuestionService {
     @Override
     public Question remove(Question question) {
         if(question!=null){
-            if(dataFound(question)>-1){
-                questions.remove(question);
+            int index = dataFound(question);
+            if(index>-1){
+                questions.remove(index);
             }else{
                 throw new DataNotFound();
             }
@@ -84,7 +85,7 @@ public class JavaQuestionService implements IQuestionService {
 
     private int dataFound(Question question) {
         for(Map.Entry<Integer, Question> item:questions.entrySet()){
-            if(item.equals(question)){
+            if(question.equals(item.getValue())){
                 return item.getKey();
             }
         }
